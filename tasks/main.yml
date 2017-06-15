@@ -26,11 +26,3 @@
     name: npm
     global: yes
     state: latest
-
-# This next section fixes an issue with using npm update in docker containers
-# which is necessary for a rebuild
-# See: https://github.com/npm/npm/issues/9863
-- name: Fix issue with using npm update in docker containers. 
-  become: yes
-  shell: 'cd $(npm root -g)/npm && npm install fs-extra && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs.move/ ./lib/utils/rename.js'
-  when: docker_npm_workaround == True
