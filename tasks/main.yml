@@ -25,4 +25,4 @@
   npm:
     name: npm
     global: yes
-    version: "2.15.12"
+    version: "latest"
