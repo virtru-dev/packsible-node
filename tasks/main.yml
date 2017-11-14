@@ -1,20 +1,20 @@
 - name: Add nodejs repo key
   become: yes
-  apt_key: 
+  apt_key:
     url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
     state: 'present'
 
-- name: Add nodejs repo 
+- name: Add nodejs repo
   become: yes
-  apt_repository: 
+  apt_repository:
     repo: "deb https://deb.nodesource.com/node_4.x/ xenial main"
     update_cache: yes
 
 - name: Install some necessary packages
   become: yes
-  apt: 
+  apt:
     name: "{{ item }}"
-    state: present 
+    state: present
     update_cache: yes
   with_items:
     - git
@@ -25,4 +25,4 @@
   npm:
     name: npm
     global: yes
-    version: "latest"
+    version: "2.15.18"
